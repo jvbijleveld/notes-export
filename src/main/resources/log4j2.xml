@@ -5,13 +5,13 @@
             %d{yyyy-MM-dd HH:mm:ss,SSS} %-5p - %-30c{1} - %m%n
         </Property>
         <Property name="log-path">logs/</Property>
-        <Property name="app-name">notes-export/</Property>
+        <Property name="app-name">notes-export</Property>
     </Properties>
     <Appenders>
         <Console name="Console-Appender" target="SYSTEM_OUT" follow="true">
             <PatternLayout pattern="${LOG_PATTERN}" />
         </Console>
-        <RollingFile name="File-Appender" fileName="${log-path}{app-name}.log" filePattern="${log-path}{app-name}-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="File-Appender" fileName="${log-path}${app-name}.log" filePattern="${log-path}${app-name}-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${LOG_PATTERN}" />
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" />
@@ -30,7 +30,7 @@
         </Logger>
 
         <Root level="info">
-            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="Console-Appender" />
         </Root>
     </Loggers>
 </Configuration>

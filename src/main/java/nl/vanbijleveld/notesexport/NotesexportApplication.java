@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class NotesexportApplication {
+
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(NotesexportApplication.class);
     }
