@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface NotesViewRepository extends CrudRepository<NotesViewEntity, String> {
 
     NotesViewEntity findOneByViewName(String viewName);
+    
+    NotesViewEntity findByIsHidden(Boolean b);
 
 }

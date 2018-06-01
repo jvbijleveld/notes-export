@@ -17,10 +17,10 @@ public class NotesViewService {
     @Autowired
     NotesViewRepository viewRepo;
 
-    public List<NotesView> getAllViews() {
+    public List<NotesView> getAllPublicViews() {
         List<NotesView> viewList = new ArrayList<>();
 
-        for (NotesViewEntity vw : viewRepo.findAll()) {
+        for (NotesViewEntity vw : viewRepo.findByIsHidden(true)) {
             viewList.add(NotesViewWrapper.wrap(vw));
         }
 

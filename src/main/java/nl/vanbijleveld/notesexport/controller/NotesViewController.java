@@ -23,7 +23,7 @@ public class NotesViewController {
     @ResponseBody
     @RequestMapping("/views")
     public List<NotesView> getViewList() {
-        return viewService.getAllViews();
+        return viewService.getAllPublicViews();
 
     }
 
