@@ -18,12 +18,18 @@ public class NotesViewService {
     NotesViewRepository viewRepo;
 
     public List<NotesView> getAllPublicViews() {
+        return iterableToList(viewRepo.findByIsHidden(false));
+    }
+    
+    public List<NotesView> getAllHiddenViews() {
+        return iterableToList(viewRepo.findByIsHidden(true));
+    }
+    
+    private List<NotesView> iterableToList(Iterable<NotesViewEntity> list){
         List<NotesView> viewList = new ArrayList<>();
-
-        for (NotesViewEntity vw : viewRepo.findByIsHidden(true)) {
+        for (NotesViewEntity vw : list) {
             viewList.add(NotesViewWrapper.wrap(vw));
         }
-
         return viewList;
     }
 

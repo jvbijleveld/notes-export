@@ -14,7 +14,7 @@ public class NotesViewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "view_id")
-    private long viewid;
+    private long viewId;
 
     @Column(name = "view_name")
     private String viewName;
@@ -29,12 +29,12 @@ public class NotesViewEntity {
     private Boolean isHidden;
 
 
-    public long getViewid() {
-        return viewid;
+    public long getViewId() {
+        return viewId;
     }
 
-    public void setViewid(long viewid) {
-        this.viewid = viewid;
+    public void setViewId(long viewId) {
+        this.viewId = viewId;
     }
 
     public String getViewName() {

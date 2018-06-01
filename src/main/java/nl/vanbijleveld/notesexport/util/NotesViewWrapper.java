@@ -6,6 +6,6 @@ import nl.vanbijleveld.notesexport.entities.NotesViewEntity;
 public class NotesViewWrapper {
 
     public static NotesView wrap(NotesViewEntity ent) {
-        return new NotesView(ent.getViewName());
+        return new NotesView(ent.getViewId(), ent.getViewName());
     }
 }

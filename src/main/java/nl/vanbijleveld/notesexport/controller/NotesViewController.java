@@ -24,7 +24,12 @@ public class NotesViewController {
     @RequestMapping("/views")
     public List<NotesView> getViewList() {
         return viewService.getAllPublicViews();
-
+    }
+    
+    @ResponseBody
+    @RequestMapping("/hiddenviews")
+    public List<NotesView> getHiddenViewList() {
+        return viewService.getAllHiddenViews();
     }
 
 }
