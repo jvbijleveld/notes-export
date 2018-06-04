@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import nl.vanbijleveld.notesexport.entities.NotesViewDocument;
+
 @Repository
 public class NotesDocumentRepository {
     private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
@@ -19,7 +21,7 @@ public class NotesDocumentRepository {
 
     public void executeViewQuery(String query) {
         LOGGER.info("Execute query {}", query);
-        List<Map<String, Object>> rows = jdbcTemplate.queryForList(query, new SluttyRowMapper());
+        List<NotesViewDocument> rows = jdbcTemplate.query(query, new SluttyRowMapper());
 
     }
 
