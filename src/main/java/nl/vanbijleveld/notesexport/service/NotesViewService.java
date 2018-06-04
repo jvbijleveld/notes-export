@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.vanbijleveld.notesexport.dao.NotesViewRepository;
+import nl.vanbijleveld.notesexport.dao.NotesDocumentRepository;
 import nl.vanbijleveld.notesexport.entities.NotesView;
 import nl.vanbijleveld.notesexport.entities.NotesViewEntity;
 import nl.vanbijleveld.notesexport.util.NotesViewWrapper;
@@ -16,6 +17,9 @@ public class NotesViewService {
 
     @Autowired
     NotesViewRepository viewRepo;
+    
+    @Autowired
+    NotesDocumentRepository docRepo;
 
     public List<NotesView> getAllPublicViews() {
         return iterableToList(viewRepo.findByIsHidden(false));
@@ -25,6 +29,11 @@ public class NotesViewService {
         return iterableToList(viewRepo.findByIsHidden(true));
     }
     
+    public void getViewData(String viewName){
+        NotesViewEntity viewEnt = viewRepo.findOneByViewName(viewName);
+        docRepo.executeViewQuery(viewEnt.getViewQuery());
+    }
+    
     private List<NotesView> iterableToList(Iterable<NotesViewEntity> list){
         List<NotesView> viewList = new ArrayList<>();
         for (NotesViewEntity vw : list) {
@@ -32,5 +41,7 @@ public class NotesViewService {
         }
         return viewList;
     }
+    
+    
 
 }

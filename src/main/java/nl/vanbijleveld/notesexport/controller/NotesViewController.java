@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class NotesViewController {
@@ -31,5 +32,12 @@ public class NotesViewController {
     public List<NotesView> getHiddenViewList() {
         return viewService.getAllHiddenViews();
     }
-
+    
+    @ResponseBody
+    @RequestMapping("/{viewName}/data")
+    public String getViewData(@PathVariable String viewName){
+        viewService.getViewData(viewName);
+        return "Ok";
+    }
+    
 }
