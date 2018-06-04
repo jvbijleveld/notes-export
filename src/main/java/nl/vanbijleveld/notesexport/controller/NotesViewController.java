@@ -3,17 +3,17 @@ package nl.vanbijleveld.notesexport.controller;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 
+import nl.vanbijleveld.notesexport.entities.NotesDocumentEntity;
 import nl.vanbijleveld.notesexport.entities.NotesView;
-import nl.vanbijleveld.notesexport.entities.NotesDocument;
 import nl.vanbijleveld.notesexport.service.NotesViewService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class NotesViewController {
@@ -27,18 +27,17 @@ public class NotesViewController {
     public List<NotesView> getViewList() {
         return viewService.getAllPublicViews();
     }
-    
+
     @ResponseBody
     @RequestMapping("/hiddenviews")
     public List<NotesView> getHiddenViewList() {
         return viewService.getAllHiddenViews();
     }
-    
+
     @ResponseBody
     @RequestMapping("/{viewName}/data")
-    public List<NotesDocument> getViewData(@PathVariable String viewName){
+    public List<NotesDocumentEntity> getViewData(@PathVariable String viewName) {
         return viewService.getViewData(viewName);
-        //return "Ok";
     }
-    
+
 }
