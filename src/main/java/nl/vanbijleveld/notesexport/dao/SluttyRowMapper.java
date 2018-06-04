@@ -1,9 +1,9 @@
 package nl.vanbijleveld.notesexport.dao;
 
-import java.util.List;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import nl.vanbijleveld.notesexport.entities.NotesDocument;
 import nl.vanbijleveld.notesexport.entities.NotesItemEntity;
@@ -18,18 +18,28 @@ public class SluttyRowMapper implements RowMapper<Object> {
         ResultSetMetaData rsmd = rs.getMetaData();
 
         for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-            String name = rsmd.getColumnName(i);
-            String val = rs.getString(name);
-            doc.addNotesItem(new NotesItemEntity(name,val));
-            
-            System.out.println("Found column " + name + ": " + val);
+            doc.addNotesItem(createNotesItemFromColumn(rs, i));
         }
         return doc;
     }
-    
-    private getColumnValue(ResultSet rs, String columnName, SqlType type){
-        
-        
-    }
 
+    private NotesItemEntity createNotesItemFromColumn(ResultSet rs, int index) throws SQLException {
+        ResultSetMetaData rsmd = rs.getMetaData();
+        String name = rsmd.getColumnName(index);
+        Object val = null;
+
+        switch (rsmd.getColumnType(index)) {
+
+        case Types.VARCHAR:
+            val = rs.getString(name);
+        case Types.INTEGER:
+            val = rs.getInt(name);
+        case Types.DATE:
+            val = rs.getDate(name);
+        case Types.CLOB:
+            val = rs.getString(name);
+        }
+        System.out.println("Created NotesItem " + name + ": " + val);
+        return new NotesItemEntity(name, val);
+    }
 }
