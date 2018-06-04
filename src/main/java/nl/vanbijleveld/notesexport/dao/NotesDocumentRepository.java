@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import nl.vanbijleveld.notesexport.entities.NotesDocument;
+
 @Repository
 public class NotesDocumentRepository {
     private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
@@ -16,10 +18,9 @@ public class NotesDocumentRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public void executeViewQuery(String query) {
+    public List<NotesDocument> executeViewQuery(String query) {
         LOGGER.info("Execute query {}", query);
-        List<Object> rows = jdbcTemplate.query(query, new SluttyRowMapper());
-
+        return jdbcTemplate.query(query, new SluttyRowMapper());
     }
 
 }

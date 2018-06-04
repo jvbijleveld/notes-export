@@ -4,6 +4,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import nl.vanbijleveld.notesexport.entities.NotesView;
+import nl.vanbijleveld.notesexport.entities.NotesDocument;
 import nl.vanbijleveld.notesexport.service.NotesViewService;
 
 import org.apache.logging.log4j.LogManager;
@@ -35,9 +36,9 @@ public class NotesViewController {
     
     @ResponseBody
     @RequestMapping("/{viewName}/data")
-    public String getViewData(@PathVariable String viewName){
-        viewService.getViewData(viewName);
-        return "Ok";
+    public List<NotesDocument> getViewData(@PathVariable String viewName){
+        return viewService.getViewData(viewName);
+        //return "Ok";
     }
     
 }
