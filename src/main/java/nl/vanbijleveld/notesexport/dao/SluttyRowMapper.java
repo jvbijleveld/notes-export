@@ -1,28 +1,35 @@
 package nl.vanbijleveld.notesexport.dao;
 
+import java.util.List;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
-import nl.vanbijleveld.notesexport.entities.NotesViewDocument;
+import nl.vanbijleveld.notesexport.entities.NotesDocument;
+import nl.vanbijleveld.notesexport.entities.NotesItemEntity;
 
 import org.springframework.jdbc.core.RowMapper;
 
 public class SluttyRowMapper implements RowMapper<Object> {
 
     @Override
-    public NotesViewDocument mapRow(ResultSet rs, int rowNum) throws SQLException {
-        NotesViewDocument doc = new NotesViewDocument();
-        String retJson = "";
+    public NotesDocument mapRow(ResultSet rs, int rowNum) throws SQLException {
+        NotesDocument doc = new NotesDocument();
         ResultSetMetaData rsmd = rs.getMetaData();
 
         for (int i = 1; i <= rsmd.getColumnCount(); i++) {
             String name = rsmd.getColumnName(i);
-            retJson += name + ",";
-            System.out.println("Found column " + name);
+            String val = rs.getString(name);
+            doc.addNotesItem(new NotesItemEntity(name,val));
+            
+            System.out.println("Found column " + name + ": " + val);
         }
-        doc.setJson(retJson);
         return doc;
+    }
+    
+    private getColumnValue(ResultSet rs, String columnName, SqlType type){
+        
+        
     }
 
 }
