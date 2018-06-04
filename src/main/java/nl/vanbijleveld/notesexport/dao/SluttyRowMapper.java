@@ -5,6 +5,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import nl.vanbijleveld.notesexport.entities.NotesViewDocument;
+
 import org.springframework.jdbc.core.RowMapper;
 
 public class SluttyRowMapper implements RowMapper<Object> {
@@ -17,10 +18,10 @@ public class SluttyRowMapper implements RowMapper<Object> {
 
         for (int i = 1; i <= rsmd.getColumnCount(); i++) {
             String name = rsmd.getColumnName(i);
-            retJson += name + ","; 
+            retJson += name + ",";
             System.out.println("Found column " + name);
         }
-
+        doc.setJson(retJson);
         return doc;
     }
 
