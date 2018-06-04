@@ -4,8 +4,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import nl.vanbijleveld.notesexport.entities.NotesDocumentEntity;
-import nl.vanbijleveld.notesexport.entities.NotesView;
-import nl.vanbijleveld.notesexport.service.NotesViewService;
+import nl.vanbijleveld.notesexport.service.NotesDocumentService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,28 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class NotesViewController {
+public class NotesDocumentController {
     private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     @Autowired
-    NotesViewService viewService;
+    NotesDocumentService documentService;
 
+    
     @ResponseBody
-    @RequestMapping("/views")
-    public List<NotesView> getViewList() {
-        return viewService.getAllPublicViews();
-    }
-
-    @ResponseBody
-    @RequestMapping("/hiddenviews")
-    public List<NotesView> getHiddenViewList() {
-        return viewService.getAllHiddenViews();
-    }
-
-    @ResponseBody
-    @RequestMapping("/view/{viewName}")
-    public List<NotesDocumentEntity> getViewData(@PathVariable String viewName) {
-        return viewService.getViewData(viewName);
+    @RequestMapping("/doc/{noteId}")
+    public NotesDocumentEntity getViewData(@PathVariable String noteId) {
+        return documentService.getDocByNoteId(noteId);
     }
 
     
