@@ -1,15 +1,19 @@
-var notesExport = angular.module('notesExport',['ngRoute','notesControllers']);
+var notesExport = angular.module('notesExport',['ngRoute']);
 
-notesExport.config(['$routeProvider', 
-    function($routeProvider){
-		$routeProvider.
-
+notesExport.config(function($routeProvider){ 
+	$routeProvider.
 		when('/home',{
-		    templateUrl: 'home.html',
 			controller: 'listMenu'
-		}).
-		otherwise({
+		})
+		.otherwise({
 			redirectTo: '/home'
 		});
 	}
-]);	
+);
+
+notesExport.controller('menuController', function($scope, $http) {
+	$http.get('/views').then(function(data){
+		$scope.viewmenu = data;
+	});
+});
+

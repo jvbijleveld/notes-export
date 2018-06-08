@@ -5,7 +5,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>
     
-        <script src="/app/controllers/NotesController.js"></script>
         <script src="/app/notesexport.js"></script>
     </head>
     
@@ -13,7 +12,7 @@
         <div id="top-bar">
             <div class="logo"></div>
         </div>
-        <div id="menu_container">  
+        <div id="menu_container" ng-controller="menuController">  
             <menu type="context" id="menuOutline">
                 <menuitem label="Dummy item" />
                 
