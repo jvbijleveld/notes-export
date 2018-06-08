@@ -45,6 +45,11 @@ BODY{
     color: white;
 }
 
+#menu_container li a {
+    text-decoration: none;
+    color: white;
+}
+
 #main_container {
     float: left;
     width: 85%;
@@ -90,6 +95,11 @@ BODY{
     border-right: 1px solid #AAA;
     border-bottom: 1px solid #000;
     font-size: 0.9em;
+}
+
+.content_container table td a {
+    text-decoration: none;
+    color: black;
 }
 
 .content_container table td {

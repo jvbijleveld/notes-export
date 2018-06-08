@@ -4,7 +4,6 @@
         <th class="firstCol"></th>
         <th ng-repeat="cols in viewdata[0].notesItems" ng-hide="cols.itemName=='NOTEID'">{{cols.itemName}} &nbsp;</th>
     </tr>
-    
     <tr ng-repeat="row in viewdata">
         <td class="firstCol"></td>
         <td ng-repeat="cols in row.notesItems" ng-hide="cols.itemName=='NOTEID'"><a ng-href="/#!/doc/{{row.noteId}}">{{cols.itemValue}}</a></td>
