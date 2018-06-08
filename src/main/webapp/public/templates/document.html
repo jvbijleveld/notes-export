@@ -1,0 +1,10 @@
+<!--TPL: DOCUMENT.HTML -->
+<div class="document_container">
+    <div class="docHeader">Document</div>
+    <table>
+        <tr ng-repeat="row in docdata.notesItems" ng-hide="row.itemName == 'NOTEID'">
+            <td >{{row.itemName}}</td>
+            <td >{{row.itemValue}}</td>
+        </tr>
+    </table>
+</div>

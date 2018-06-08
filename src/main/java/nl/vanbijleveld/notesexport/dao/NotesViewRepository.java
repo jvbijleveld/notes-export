@@ -10,6 +10,8 @@ public interface NotesViewRepository extends CrudRepository<NotesViewEntity, Str
 
     NotesViewEntity findOneByViewName(String viewName);
     
+    NotesViewEntity findOneByViewId(Long viewId);
+    
     Iterable<NotesViewEntity> findByIsHidden(Boolean b);
 
 }

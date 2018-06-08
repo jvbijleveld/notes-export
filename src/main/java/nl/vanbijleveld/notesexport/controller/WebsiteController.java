@@ -12,11 +12,9 @@ public class WebsiteController {
         return "csrf";
     }
 
-    
     @RequestMapping(value = "/")
     public String registerPage(Model model) {
         model.addAttribute("title", "Notes Export");
         return "frameset";
     }
-
 }

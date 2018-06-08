@@ -34,6 +34,11 @@ public class NotesViewService {
         NotesViewEntity viewEnt = viewRepo.findOneByViewName(viewName);
         return docRepo.executeViewQuery(viewEnt.getViewQuery());
     }
+    
+    public List<NotesDocumentEntity> getViewData(Long viewId) {
+        NotesViewEntity viewEnt = viewRepo.findOneByViewId(viewId);
+        return docRepo.executeViewQuery(viewEnt.getViewQuery());
+    }
 
     private List<NotesView> iterableToList(Iterable<NotesViewEntity> list) {
         List<NotesView> viewList = new ArrayList<>();

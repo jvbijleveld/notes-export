@@ -35,10 +35,8 @@ public class NotesViewController {
     }
 
     @ResponseBody
-    @RequestMapping("/view/{viewName}")
-    public List<NotesDocumentEntity> getViewData(@PathVariable String viewName) {
-        return viewService.getViewData(viewName);
+    @RequestMapping("/views/data/{viewId}")
+    public List<NotesDocumentEntity> getViewData(@PathVariable Long viewId) {
+        return viewService.getViewData(viewId);
     }
-
-    
 }

@@ -35,7 +35,7 @@ public class SluttyRowMapper implements RowMapper<NotesDocumentEntity> {
         Object val = null;
 
         if (NOTE_ID_COLUMN.equals(name)) {
-            return;
+            //return;
         }
         switch (rsmd.getColumnType(index)) {
         case Types.VARCHAR:
