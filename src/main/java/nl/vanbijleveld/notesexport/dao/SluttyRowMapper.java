@@ -34,9 +34,7 @@ public class SluttyRowMapper implements RowMapper<NotesDocumentEntity> {
         String name = rsmd.getColumnName(index);
         Object val = null;
 
-        if (NOTE_ID_COLUMN.equals(name)) {
-            //return;
-        }
+       
         switch (rsmd.getColumnType(index)) {
         case Types.VARCHAR:
             val = rs.getString(name);
@@ -44,8 +42,12 @@ public class SluttyRowMapper implements RowMapper<NotesDocumentEntity> {
         case Types.INTEGER:
             val = rs.getInt(name);
             break;
+        case Types.DATE:
+            val = rs.getString(name);
+            break;
         }
+        
         LOGGER.debug("Created NotesItem {} : {}", name, val);
-        doc.addNotesItem(new NotesItemEntity(name, val));
+        doc.addNotesItem(name, val);
     }
 }

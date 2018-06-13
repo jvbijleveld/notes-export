@@ -1,6 +1,9 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+
 <html >
     <head>
-        <title></title>
+        <title><spring:eval expression="@environment.getProperty('spring.application.name')" /></title>
         <link rel="stylesheet" type="text/css" href="public/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>

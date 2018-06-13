@@ -2,10 +2,10 @@
 <table>
     <tr class="firstRow">
         <th class="firstCol"></th>
-        <th ng-repeat="cols in viewdata[0].notesItems" ng-hide="cols.itemName=='NOTEID'">{{cols.itemName}} &nbsp;</th>
+        <th ng-repeat="(key, value) in viewdata[0].notesItems" ng-hide="key=='NOTEID'">{{key}} &nbsp;</th>
     </tr>
     <tr ng-repeat="row in viewdata">
         <td class="firstCol"></td>
-        <td ng-repeat="cols in row.notesItems" ng-hide="cols.itemName=='NOTEID'"><a ng-href="/#!/doc/{{row.noteId}}">{{cols.itemValue}}</a></td>
+        <td ng-repeat="(key, value) in row.notesItems" ng-hide="key=='NOTEID'"><a ng-href="/#!/doc/{{row.noteId}}">{{value}}</a></td>
     </tr>
 </table>

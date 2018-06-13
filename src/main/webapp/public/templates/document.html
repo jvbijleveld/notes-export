@@ -2,9 +2,9 @@
 <div class="document_container">
     <div class="docHeader">Document</div>
     <table>
-        <tr ng-repeat="row in docdata.notesItems" ng-hide="row.itemName == 'NOTEID'">
-            <td >{{row.itemName}}</td>
-            <td >{{row.itemValue}}</td>
+        <tr ng-repeat="(key, value) in docdata.notesItems" ng-hide="key == 'NOTEID'">
+            <td >{{key}}</td>
+            <td >{{value}}</td>
         </tr>
     </table>
 </div>
